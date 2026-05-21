@@ -1,13 +1,163 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8"
-    <title>Minha primeira Pagina</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Espaço Digital</title>
+    <!-- Tailwind CSS para estilização rápida e moderna -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts para fontes variadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons para ícones modernos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Variáveis CSS dinâmicas controladas via JS */
+        
+         :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-gradient-from: #0f172a;
+            --bg-gradient-to: #1e1b4b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, var(--bg-gradient-from), var(--bg-gradient-to));
+            color: var(--text-main);
+            min-height: 100vh;
+            transition: background 0.5s ease, color 0.3s ease;
+        }
+        
+        .custom-font {
+            font-family: var(--font-family);
+        }
+        
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        /* Custom scrollbar */
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
-<body> <h1>Bem-vindo ao meu site</h1>
 
-<p>Este é um parágrafo sobre <strong>aprendizado</strong>.</p>
+<body class="relative antialiased selection:bg-indigo-500 selection:text-white pb-16">
 
-<a href="https://google.com">Clique aqui para pesquisar</a>
-</body>
-</html>
+    <!-- Fundo decorativo animado sutil -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-[40%] -left-[20%] w-[80vw] h-[80vw] rounded-full bg-indigo-500/10 blur-[120px]"></div>
+        <div class="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-purple-500/10 blur-[120px]"></div>
+    </div>
+
+    <!-- Interface Principal -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+
+        <!-- Cabeçalho / Barra de Navegação -->
+        <header class="flex justify-between items-center py-6 border-b border-white/5 mb-12 sm:mb-20">
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg" id="logo-icon">M</span>
+                <span class="font-bold tracking-tight text-lg" id="header-logo-text">MeuEspaço</span>
+            </div>
+            <nav class="hidden sm:flex items-center gap-6 text-sm font-medium opacity-80">
+                <a href="#inicio" class="hover:opacity-100 transition">Início</a>
+                <a href="#sobre" class="hover:opacity-100 transition">Sobre</a>
+                <a href="#projetos" class="hover:opacity-100 transition">Projetos</a>
+                <a href="#contato" class="hover:opacity-100 transition">Contato</a>
+            </nav>
+            <button onclick="toggleCustomizer()" class="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-white/10 hover:bg-white/15 rounded-full border border-white/10 transition-all shadow-sm">
+                <i data-lucide="palette" class="w-4 h-4 text-indigo-400"></i>
+                <span>Personalizar</span>
+            </button>
+        </header>
+
+        <!-- Seção Hero (Apresentação) -->
+        <section id="inicio" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-indigo-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Disponível para novos projetos
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none" id="hero-title">
+                    Olá, eu sou o <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400" id="hero-name">Miguel</span>.
+                </h1>
+                <p class="text-lg sm:text-xl opacity-80 leading-relaxed font-light" id="hero-subtitle">
+                    Desenvolvedor criativo focado em construir experiências digitais incríveis, modernas e de alta performance.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contato" class="btn-primary px-6 py-3 rounded-xl font-medium shadow-lg flex items-center gap-2 text-sm">
+                        <span>Falar Comigo</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#projetos" class="px-6 py-3 rounded-xl font-medium bg-white/5 hover:bg-white/10 border border-white/10 transition flex items-center gap-2 text-sm">
+                        <span>Ver Projetos</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Foto de perfil ou Card ilustrativo -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-30 blur group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl glass-card p-6 flex flex-col justify-between overflow-hidden shadow-2xl">
+                        <div class="flex justify-between items-start">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                                <i data-lucide="code" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs uppercase tracking-widest opacity-40 font-mono">Status: Ativo</span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-mono text-indigo-400 mb-1">const desenvolvedor = {</p>
+                            <p class="text-sm font-mono opacity-80 pl-4">foco: "Web & Mobile",</p>
+                            <p class="text-sm font-mono opacity-80 pl-4">cafeina: "100%",</p>
+                            <p class="text-sm font-mono opacity-80 pl-4">criatividade: true</p>
+                            <p class="text-xs font-mono text-indigo-400">};</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </div>
+                        </div>
